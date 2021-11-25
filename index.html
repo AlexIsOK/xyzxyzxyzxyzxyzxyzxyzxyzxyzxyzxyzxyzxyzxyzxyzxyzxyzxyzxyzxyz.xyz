@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz.xyz</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        
+        a {
+            color: wheat;
+        }
+    </style>
+    <script>
+        
+        function encode(string) {
+            
+        }
+        
+        function decode(number) {
+            
+        }
+
+        function binaryAgent(str) {
+            let binString = '';
+            
+            str.split(' ').map(bin => binString += String.fromCharCode(parseInt(bin, 3)));
+            
+            return binString;
+        }
+        
+        function space(str) {
+            return str.match(/.{1,8}/g).join(" ");
+        }
+        
+        function pad(str_arr) {
+            let a = "";
+            str_arr.map(bin => a += String(bin).padStart(8, '0'));
+            
+            return a;
+        }
+        
+        function convert(input) {
+            let output = "";
+            
+            for(const item of input) {
+                output += item.charCodeAt(0).toString(3) + " ";
+            }
+            
+            return output.substring(0, output.length - 1);
+        }
+        
+        if(window.location.href.includes("#")) {
+            //easier to copypaste into the console
+            (() => {
+                const f = window.location.href.split("#")[window.location.href.split("#").length - 1];
+                const u = f.replaceAll("x", "0").replaceAll("y", "1").replaceAll("z", "2");
+                const c = space(u);
+                const k = binaryAgent(c);
+                window.location.href = k;
+            }).call();
+        }
+        
+        function makeXYZ(str) {
+            const f = convert(str);
+            const u = pad(f.split(' '));
+            
+            const base = `https://xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz.xyz/#`;
+            
+            document.getElementById("result").innerText = base + u.replaceAll("0", "x")
+                                                                  .replaceAll("1", "y")
+                                                                  .replaceAll("2", "z");
+            document.getElementById("result").href = base + u.replaceAll("0", "x")
+                                                                  .replaceAll("1", "y")
+                                                                  .replaceAll("2", "z");
+        }
+        
+    </script>
+</head>
+<body>
+<noscript>please enable js to use this</noscript>
+<h1>Make your URLs stupidly long!</h1>
+<p>Testimonials: "Why would anyone ever need this?" -some guy</p>
+<h3>generate an even longer domain that's just XYZ repeating!</h3>
+<label for="f">enter the url you want to reverse-shorten here:</label>
+<input type="text" id="f">
+<button onclick="makeXYZ(document.getElementById('f').value)">do it</button>
+<a id="result"></a>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer>
+    This site is in dark mode so your eyes don't burn.
+    <br>
+    You're welcome :)
+</footer>
+</html>
