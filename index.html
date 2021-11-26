@@ -58,12 +58,16 @@
                 const f = window.location.href.split("#")[window.location.href.split("#").length - 1];
                 const u = f.replaceAll("x", "0").replaceAll("y", "1").replaceAll("z", "2");
                 const c = space(u);
-                const k = binaryAgent(c);
+                let   k = binaryAgent(c);
+                if(!k.includes("://"))
+                    k = `https://${k}`;
                 window.location.href = k;
             }).call();
         }
         
         function makeXYZ(str) {
+            if(str.includes("dQw4w9WgXcQ"))
+                document.getElementById("rick").hidden = false;
             const f = convert(str);
             const u = pad(f.split(' '));
             
@@ -88,13 +92,9 @@
 <br>
 <input type="text" id="f" style="width: 300px">
 <button onclick="makeXYZ(document.getElementById('f').value)">do it</button>
+<h1 id="rick" hidden>i see you're about to do a little rickrolling</h1>
 <br>
 <a id="result" style="word-wrap: break-word"></a>
 </body>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<footer>
-    This site is in dark mode so your eyes don't burn.
-    <br>
-    You're welcome :)
-</footer>
 </html>
